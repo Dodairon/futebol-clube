@@ -2,7 +2,9 @@ version: '3.8'
 services:
   frontend:
     build: ./frontend
-    platform: linux/x86_64 
+    platform: linux/x86_64
+    ports:
+      - 3000:3000 
     # ...
     depends_on:
       backend:
@@ -16,6 +18,8 @@ services:
   backend:
     build: ./backend
     platform: linux/x86_64
+    ports:
+      - 3001:3001
     restart: 'always'
     # ...
     depends_on:

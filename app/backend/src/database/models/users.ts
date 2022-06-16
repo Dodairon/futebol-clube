@@ -9,14 +9,19 @@ class Users extends Model {
   password: string;
 }
 
-Users.init({
-  username: DataTypes.STRING,
-  role: DataTypes.STRING,
-  email: DataTypes.STRING,
-  password: DataTypes.STRING,
-}, {
-  sequelize: db,
-  timestamps: false,
-});
+Users.init(
+  {
+    username: DataTypes.STRING,
+    role: DataTypes.STRING,
+    email: DataTypes.STRING,
+    password: DataTypes.STRING,
+  },
+  {
+    sequelize: db,
+    timestamps: false,
+    underscored: true,
+    tableName: 'users',
+  },
+);
 
 export default Users;
