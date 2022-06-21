@@ -9,17 +9,23 @@ class Matches extends Model {
   inProgress: boolean;
 }
 
-Matches.init({
-  homeTeam: DataTypes.INTEGER,
-  homeTeamGoals: DataTypes.INTEGER,
-  awayTeam: DataTypes.INTEGER,
-  awayTeamGoals: DataTypes.INTEGER,
-  inProgress: DataTypes.BOOLEAN,
-}, {
-  sequelize: db,
-  timestamps: false,
-  underscored: true,
-  tableName: 'matches',
-});
+Matches.init(
+  {
+    homeTeam: DataTypes.INTEGER,
+    homeTeamGoals: DataTypes.INTEGER,
+    awayTeam: DataTypes.INTEGER,
+    awayTeamGoals: DataTypes.INTEGER,
+    inProgress: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: true,
+    },
+  },
+  {
+    sequelize: db,
+    timestamps: false,
+    underscored: true,
+    tableName: 'matches',
+  },
+);
 
 export default Matches;
