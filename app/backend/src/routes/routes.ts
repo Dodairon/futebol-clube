@@ -10,6 +10,7 @@ import {
   patchScoreMatch,
 } from '../controllers/matches';
 import { equalTeams, invalidTeam } from '../middlewares/matches';
+import homeBoard from '../controllers/leaderbord';
 
 const router = Router();
 
@@ -21,5 +22,6 @@ router.get('/matches', getAllMatches);
 router.post('/matches', equalTeams, invalidTeam, postSaveMatch);
 router.patch('/matches/:id/Finish', postFalseMatch);
 router.patch('/matches/:id', patchScoreMatch);
+router.get('/leaderboard/home', homeBoard);
 
 export default router;
