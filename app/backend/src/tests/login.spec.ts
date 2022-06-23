@@ -69,3 +69,22 @@ describe('/login', () => {
   });
 });
 
+describe('/login/validate', () => {
+  it('retornar usuario', async () => {
+    response = await chai.request(app)
+      .post('/login')
+      .send({
+        email: 'user@user.com',
+        password: 'secret_user',
+      });
+      response = await chai.request(app)
+      .get('/login/validate')
+      .set({'authorization': response.body.token});
+    expect(response.status).to.equal(200);
+  });
+  it('autorizacao nao encontrada', async () => {
+    response = await chai.request(app)
+      .get('/login/validate')
+    expect(response.status).to.equal(400);
+  });
+});
